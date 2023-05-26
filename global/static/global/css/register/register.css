@@ -1,0 +1,19 @@
+.block-button {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: rgb(248, 248, 248);
+
+    min-width: 200px;
+    min-height: 200px;
+
+    padding: 20px;
+    margin: 0px 5px;
+    border: 2.5px solid rgba(168, 168, 168, 0.8);
+    border-radius: 5px;
+
+    text-align: center;
+    text-decoration: none;
+    text-underline-offset: none;
+}

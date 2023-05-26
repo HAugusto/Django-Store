@@ -1,0 +1,32 @@
+.main-content-overview .viewport {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 2px solid;
+    border-color: rgba(162, 173, 185, 0.5);
+  }
+  
+  .main-content-list .viewport-content{
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .card-header{
+    font-size: 37px;
+    font-style: bold;
+    font-weight: 700;
+    color: rgba(72, 72, 72, 0.75);
+  }
+  
+  .card-body .card-title, h5{
+    height: 75px;
+    font-size: 24px;
+    font-style: bold;
+    font-weight: 600;
+    color: rgba(135, 135, 135, 0.75);
+  }
+  
+  .card-body .card-text {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(205, 205, 205);
+  }
+  

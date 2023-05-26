@@ -1,0 +1,43 @@
+/*
+CSS Styles.css é um arquivo contendo estilos globais que serão aplicados em todo o site,
+além de ser utilizado como meio de configuração para alguns itens do HTML
+*/
+
+/* Estilo Geral do Site */
+:root {
+  background-color: rgb(230, 230, 230);
+}
+
+/* Estilo Geral das Páginas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.02em;
+  /* <---- Fonte Global */
+}
+
+/* Estilo Geral do Container Principal */
+.container {
+  width: auto;
+  max-width: 144rem;
+  padding: 1.5rem;
+}
+
+/* Estilo Geral das Listas */
+li,
+ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+/* Estilo Geral dos Botões */
+button {
+  border: 0px;
+  background-color: white;
+}
+
+/* Estilo Geral do Body da Página */
+body {
+  background-color: white;
+}

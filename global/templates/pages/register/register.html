@@ -1,0 +1,27 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Home</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="main-content container">
+        <div class="d-flex justify-content-md-center">
+            <a href="cadastro/produto/" type="button" class="block-button">
+                <p> Cadastrar Produto </p>
+            </a>
+            <a href="cadastro/fornecedor/" type="button" class="block-button">
+                <p> Cadastrar Cliente </p>
+            </a>
+            <a href="cadastro/cliente/" type="button" class="block-button">
+                <p> Cadastrar Fornecedor </p>
+            </a>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
