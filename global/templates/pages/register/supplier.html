@@ -2,15 +2,138 @@
 
 {% block title %}
 
-<title>Home</title>
+<title>Cadastro no Glossário</title>
 
 {% endblock %}
 
 {% block content %}
 
 <main class="main-content-container">
-    <div class="main-content main-content-list container">
 
+    <div class="forms-container">
+        <div class="forms-container">
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse1">
+                                <label>1. Básico</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse1" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="nome" class="form-label">Nome do Fornecedor</label>
+                                        <input type="text" class="form-control" aria-describedby="Nome do Fornecedor"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="descricao" class="form-label">Descrição</label>
+                                        <textarea type="text" class="form-control"
+                                            aria-describedby="Descrição"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="cnpj" class="form-label">CNPJ</label>
+                                        <input type="text" class="form-control" aria-describedby="CNPJ"
+                                            placeholder="Escreva aqui..." maxlength="18" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse2">
+                                <label>2. Endereço</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="endereco" class="form-label">Endereço</label>
+                                        <input type="text" class="form-control" aria-describedby="Endereço"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="cidade" class="form-label">Cidade</label>
+                                        <input type="text" class="form-control" aria-describedby="Cidade"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <input type="text" class="form-control" aria-describedby="Estado"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse3">
+                                <label>3. Contato</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse3" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" aria-describedby="Email"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="telefone" class="form-label">Telefone Fixo</label>
+                                        <input type="text" class="form-control" aria-describedby="Telefone"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="celular" class="form-label">Celular</label>
+                                        <input type="text" class="form-control" aria-describedby="Celular"
+                                            placeholder="Escreva aqui..." required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
     </div>
 </main>
 

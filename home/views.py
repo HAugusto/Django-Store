@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.contrib import messages
+from . import forms
+from .utils.Database import getFromDatabase
 
 # Create your views here.
 class HomePageView:
@@ -23,13 +26,41 @@ class RegisterPageView:
         return render(request, template_name='pages/register/product.html', context=context)
     
     def SupplierRegistrationPage(request):
+        if request.method == 'POST':
+            form = forms.newSupplier(request.POST)
+            
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Fornecedor cadastrado!")
+                return redirect('/')
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.newSupplier()
         
-        context = {}
+        context = {'form': form}
         
         return render(request, template_name='pages/register/supplier.html', context=context)
     
     def ClientRegistrationPage(request):
-        
-        context = {}
+        if request.method == 'POST':
+            form = forms.newClient(request.POST)
+            
+            if form.is_valid():
+                try:
+                    if not getFromDatabase.ifExists.Client(form.cleaned_data['nome']):
+                        form.save()
+                        messages.success(request, "Fornecedor cadastrado!")
+                        return redirect('/glossario/')
+                except Exception as exception:
+                    print(str(exception))
+                    messages.warning(request, "Equipamento já cadastrado!")
+                    pass
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.newSupplier()
+            
+        context = {'form': form}
         
         return render(request, template_name='pages/register/client.html', context=context)

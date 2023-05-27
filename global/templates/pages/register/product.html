@@ -2,49 +2,52 @@
 
 {% block title %}
 
-<title>Home</title>
+<title>Cadastro de Produto</title>
 
 {% endblock %}
 
 {% block content %}
 
 <main class="main-content-container">
-    <div class="main-content main-content-list container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At maiores obcaecati optio doloremque commodi odio
-        voluptatem ad libero repellendus blanditiis, nulla quos, dolorum explicabo nemo mollitia? Odit laboriosam
-        aspernatur eum.
+    <!-- Forms 1 -->
+    <div class="main-content container">
+        <form id="form1" method="post" action="">
+            {% csrf_token %}
 
+            <div class="selection-content-page d-flex">
+                <div class="select-content">
+
+                    <div class="form-row d-flex mb-3">
+                        <div class="input-container">
+                            <div class="input-container-inside">
+
+                                <label for="InputEquipmentList" class="form-label">EQUIPAMENTO PADRÃO</label>
+                                <select class="form-select" aria-label="Default select example" required>
+                                    <option selected>Selecionar...</option>
+
+                                    {% for equipment_list in equipment %}
+
+                                    <option value="{{ equipment_list.id }}">{{ equipment_list.nome }}
+                                    </option>
+
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="input-container-inside">
+                                <label for="InputTAGNameGlossary" class="form-label">TAG</label>
+                                <input type="text" class="form-control" id="InputGlossaryTagName" aria-describedby="TAG"
+                                    placeholder="Escreva aqui...">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Próximo</button>
+                </div>
+            </div>
+        </form>
     </div>
 </main>
 
-{% endblock %}
+{% endblock%}
