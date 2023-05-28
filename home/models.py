@@ -12,7 +12,7 @@ class EnderecoMixin(models.Model):
         abstract = True
         
 class ContatoMixin(models.Model):
-    email = models.CharField(max_length=50, unique=True, null=False, blank=False)
+    email = models.CharField(max_length=50, unique=True, null=True, blank=True)
     telefone = models.CharField(max_length=14, unique=True, null=True, blank=True)
     celular = models.CharField(max_length=20, unique=True, null=True, blank=True)
     
