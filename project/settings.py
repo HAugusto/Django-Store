@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%-#*j($dfswu)rdt!4g(2e^s%we%2ho=t@ljb)5qi(p1o$i*7+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
+#WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
@@ -139,6 +139,17 @@ STATICFILES_DIRS = [
     BASE_DIR / 'global/static/',
 ]
 
+
+
+DEBUG = False
+
+ALLOWED_HOSTS = ["localhost","*","127.0.0.1", "192.168.0.1"]
+
+WSGI_APPLICATION = 'project.wsgi.application'
+
+#STATIC_URL = '/static/'
+
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
