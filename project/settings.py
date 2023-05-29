@@ -90,13 +90,13 @@ TEMPLATES = [
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.mysql",
         "HOST": config("DB_HOST", default="localhost"),
         "PORT": config("DB_PORT", cast=int, default=""),
-        "NAME": config("DB_NAME", default="postgres"),
-        "USER": config("DB_USER", default="postgres"),
+        "NAME": config("DB_NAME", default=""),
+        "USER": config("DB_USER", default=""),
         "PASSWORD": config("DB_PASSWORD", default=""),
-        "OPTIONS": {"options": config("DB_OPTIONS", default="")},
+        
     },
 }
 
