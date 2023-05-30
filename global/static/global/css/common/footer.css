@@ -7,6 +7,7 @@ Esse documento define as configurações envolver o rodapé
 .footer-bread .col-md-4 {
   text-align: center;
   padding: 10px;
+  
 }
 
 .footer-bread span {
@@ -16,4 +17,7 @@ Esse documento define as configurações envolver o rodapé
 .footer-bread img {
   width: 30%;
   opacity: 1;
+}
+.barra{
+  color: black;
 }

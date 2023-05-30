@@ -6,13 +6,16 @@ Toda a configuração envolver o header se encontra nesse documento.
 
 .navbar {
     height: auto;
+    background-color:#3b7cc5;
     max-height: 70px;
     padding: 20px 0px;
+    box-shadow: 0px 0px 0.25em  black;
   }
   
-  .nav-link {
-    color: black;
+  .nav-link, .nav-link .active, .nav-item {
+    color: #ffffff;
     width: fit-content;
+    font-weight: 450;
   }
   
   .navbar .col-md-4 {
@@ -20,33 +23,6 @@ Toda a configuração envolver o header se encontra nesse documento.
     height: 40px;
     width: 30%;
   }
-  
-  .search-form-container {
-    padding: 0px 10%;
-    width: 100%;
-  }
-  
-  .btn-outline-success{
-    width: auto;
-  }
-  
-  /* CONTAINER DO PERFIL */
-  
-  .profile-picture-container {
-    padding: 5px;
-    position: relative;
-    height: 50px;
-    width: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
-  }
-  
-  .profile-picture-container img {
-    position: relative;
-    top: 2.5%;
-    left: 2.5%;
-    height: 95%;
-    width: 95%;
-    object-fit: cover;
-    border-radius: 50%;
+  .nav-link:focus, .nav-link.active, .nav-link:hover{
+    color: rgb(218, 218, 218);
   }
