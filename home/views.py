@@ -11,7 +11,15 @@ class HomePageView:
         context = {}
         
         return render(request, template_name='pages/index.html', context=context)
-    
+
+class ClientPageView:
+    def ClientPage(request):
+        client = getFromDatabase.AboutClient.getAll()
+        
+        context = {'client_list': client}
+        
+        return render(request, template_name='pages/read/client.html', context=context)
+
 class RegisterPageView:
     def RegistrationPage(request):
         
@@ -54,6 +62,9 @@ class RegisterPageView:
         return render(request, template_name='pages/register/category.html', context=context)
     
     def ComponentRegistrationPage(request):
+        category_list = getFromDatabase.AboutCategory.getAll()
+        supplier_list = getFromDatabase.AboutSupplier.getAll()
+        
         if request.method == 'POST':
             form = forms.newComponent(request.POST)
         
@@ -66,9 +77,10 @@ class RegisterPageView:
         else:
             form = forms.newComponent()
             
-        context = {'form': form}
+        context = {'form': form, 'category_list': category_list, 'supplier_list': supplier_list}
         
         return render(request, template_name='pages/register/component.html', context=context)
+    
     def ProductRegistrationPage(request):
         
         context = {}

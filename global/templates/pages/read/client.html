@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Clientes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+  <div class="container">
+    {% for client in client_list %}
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Endereço</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row"><a href="/glossario/{{ tag_list.id }}/"> {{ client.nome }} </a></th>
+          <td>{{ client.cpf }}</td>
+          <td>{{ client.endereco }}, {{ client.cidade }}</td>
+          <td>{{ client.telefone }}</td>
+          <td>{{ client.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock %}

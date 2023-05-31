@@ -65,32 +65,39 @@
                         <div class="accordion-header" id="flush-heading2">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapse2">
-                                <label>2. Endereço</label>
+                                <label>2. Outros</label>
                             </button>
                         </div>
                         <div id="flush-collapse2" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
-                                        <label for="endereco" class="form-label">Endereço</label>
-                                        <input type="text" class="form-control" aria-describedby="Endereço"
-                                            placeholder="Escreva aqui..." name="endereco" required>
-                                    </div>
+                                <div class="input-container-inside">
+                
+                                    <label for="category" class="form-label">Categoria</label>
+                                    <select class="form-select" aria-label="Default select example" required>
+                                        <option selected>Selecionar...</option>
+                                
+                                        {% for category in category_list %}
+                                
+                                        <option value="{{ category.id }}">{{ category.nome }}</option>
+                                
+                                        {% endfor %}
+                                
+                                    </select>
                                 </div>
-
-                                <div class="mb-3">
+                                <div class="input-container">
                                     <div class="input-container-inside">
-                                        <label for="cidade" class="form-label">Cidade</label>
-                                        <input type="text" class="form-control" aria-describedby="Cidade"
-                                            placeholder="Escreva aqui..." name="cidade" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
-                                        <label for="estado" class="form-label">Estado</label>
-                                        <input type="text" class="form-control" aria-describedby="Estado"
-                                            placeholder="Escreva aqui..." name="estado" required>
+                                
+                                        <label for="supplier" class="form-label">Fabricante</label>
+                                        <select class="form-select" aria-label="Default select example" required>
+                                            <option selected>Selecionar...</option>
+                                
+                                            {% for supplier in supplier_list %}
+                                
+                                            <option value="{{ supplier.id }}">{{ supplier.nome }}</option>
+                                
+                                            {% endfor %}
+                                
+                                        </select>
                                     </div>
                                 </div>
                             </div>
