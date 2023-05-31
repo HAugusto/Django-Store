@@ -10,8 +10,7 @@
 
 <main class="main-content-container">
   <div class="container">
-    {% for client in client_list %}
-
+    
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -22,19 +21,18 @@
           <th scope="col">Email</th>
         </tr>
       </thead>
-
-      <tbody>
-        <tr>
+        <tbody>
+          {% for client in client_list %}
+          <tr>
           <th scope="row"><a href="/glossario/{{ tag_list.id }}/"> {{ client.nome }} </a></th>
           <td>{{ client.cpf }}</td>
           <td>{{ client.endereco }}, {{ client.cidade }}</td>
           <td>{{ client.telefone }}</td>
           <td>{{ client.email }}</td>
-        </tr>
+          </tr>
+          {% endfor %}
       </tbody>
     </table>
-
-    {% endfor %}
   </div>
 </main>
 
