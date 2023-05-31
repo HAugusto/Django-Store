@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
-from . import forms
-from .utils.Database import getFromDatabase
+from . import forms, models
+from .utils.lib_db import getFromDatabase
 
 # Create your views here.
 class HomePageView:
@@ -18,6 +18,23 @@ class RegisterPageView:
         context = {}
         
         return render(request, template_name='pages/register/register.html', context=context)
+    
+    def StorageRegistrationPage(request):
+        if request.method == 'POST':
+            form = forms.newStorage(request.POST)
+            
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Armazem cadastrado!")
+                return redirect('/')
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.newStorage()
+        
+        context = {'form': form}
+        
+        return render(request, template_name='pages/register/storage.html', context=context) 
     
     def CategoryRegistrationPage(request):
         if request.method == 'POST':
@@ -36,7 +53,7 @@ class RegisterPageView:
         
         return render(request, template_name='pages/register/category.html', context=context)
     
-    def ComponenteRegistrationPage(request):
+    def ComponentRegistrationPage(request):
         if request.method == 'POST':
             form = forms.newComponent(request.POST)
         
@@ -80,15 +97,9 @@ class RegisterPageView:
             form = forms.newClient(request.POST)
             
             if form.is_valid():
-                try:
-                    if not getFromDatabase.ifExists.Client(form.cleaned_data['nome']):
-                        form.save()
-                        messages.success(request, "Fornecedor cadastrado!")
-                        return redirect('/glossario/')
-                except Exception as exception:
-                    print(str(exception))
-                    messages.warning(request, "Equipamento já cadastrado!")
-                    pass
+                form.save()
+                messages.success(request, "Fornecedor cadastrado!")
+                return redirect('/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:

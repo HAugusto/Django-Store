@@ -38,21 +38,7 @@ class Cliente(EnderecoMixin, ContatoMixin, TimestampMixin):
     nome = models.CharField(max_length=100, null=False, blank=False)
     is_pessoa_fisica = models.BooleanField(default=True)
     cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
-    cnpj = models.CharField(max_length=18, unique=True, blank=True, null=True)
-    
-    def save(self, *args, **kwargs):
-        if self.is_pessoa_fisica:
-            self.cnpj = None
-        else:
-            self.cpf = None
-        super().save(*args, **kwargs) 
-        
-    def clean(self):
-        if self.is_pessoa_fisica and not self.cpf:
-            raise ValidationError("O CPF é obrigatório para clientes do tipo pessoa física.")
-        elif not self.is_pessoa_fisica and not self.cnpj:
-            raise ValidationError("O CNPJ é obrigatório para clientes do tipo pessoa jurídica.")
-        
+            
     def __str__(self):
         return self.nome    
     
@@ -91,10 +77,9 @@ class Computador(TimestampMixin):
     def __str__(self):
         return self.nome
     
-class Armazem(TimestampMixin):
+class Armazem(TimestampMixin, EnderecoMixin):
     nome = models.CharField(max_length=50, null=False, blank=False)
     descricao = models.CharField(max_length=200, null=True, blank=True)
-    endereco = models.CharField(max_length=200, null=False, blank=False)
     volume = models.FloatField(null=False, blank=False, default=10)
 
     def __str__(self):

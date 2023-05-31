@@ -89,19 +89,18 @@ TEMPLATES = [
 
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "HOST": config("DB_HOST", default="localhost"),
-        "PORT": config("DB_PORT", cast=int, default=""),
-        "NAME": config("DB_NAME", default=""),
-        "USER": config("DB_USER", default=""),
-        "PASSWORD": config("DB_PASSWORD", default=""),
-        
-    },
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "HOST": config("DB_HOST", default="localhost"),
+    #     "PORT": config("DB_PORT", cast=int, default=""),
+    #     "NAME": config("DB_NAME", default=""),
+    #     "USER": config("DB_USER", default=""),
+    #     "PASSWORD": config("DB_PASSWORD", default=""),
+    # },
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
 
 # Password validation
@@ -145,7 +144,7 @@ STATICFILES_DIRS = [
 
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost","*","127.0.0.1", "192.168.0.1"]
 
