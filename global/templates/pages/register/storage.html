@@ -2,7 +2,7 @@
 
 {% block title %}
 
-<title>Cadastro no Glossário</title>
+<title>Cadastro de Armazém</title>
 
 {% endblock %}
 
@@ -33,12 +33,19 @@
                                             placeholder="Escreva aqui..." name="nome" required>
                                     </div>
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <div class="input-container-inside">
-                                        <label for="cpf" class="form-label">CPF</label>
-                                        <input type="text" class="form-control" aria-describedby="CPF"
-                                            placeholder="Escreva aqui..." maxlength="18" name="cpf" required>
+                                        <label for="descricao" class="form-label">Descrição</label>
+                                        <textarea type="text" class="form-control" aria-describedby="Descrição"
+                                            name="descricao"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="volume" class="form-label">Volume</label>
+                                        <input type="float" class="form-control" aria-describedby="Volume" min="0" name="volume" required>
                                     </div>
                                 </div>
                             </div>
@@ -83,45 +90,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion accordion-flush" id="accordionFlush">
-                    <div class="accordion-item">
-                        <div class="accordion-header" id="flush-heading3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapse3">
-                                <label>3. Contato</label>
-                            </button>
-                        </div>
-                        <div id="flush-collapse3" class="accordion-collapse collapse">
-                            <div class="accordion-body">
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" aria-describedby="Email"
-                                            placeholder="Escreva aqui..." name="email">
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
-                                        <label for="telefone" class="form-label">Telefone Fixo</label>
-                                        <input type="text" class="form-control" aria-describedby="Telefone"
-                                            placeholder="Escreva aqui..." name="telefone">
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
-                                        <label for="celular" class="form-label">Celular</label>
-                                        <input type="text" class="form-control" aria-describedby="Celular"
-                                            placeholder="Escreva aqui..." name="celular">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <br>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

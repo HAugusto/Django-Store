@@ -1,0 +1,114 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Cadastro de Armazém</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+
+    <div class="forms-container">
+        <div class="forms-container">
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse1">
+                                <label>1. Básico</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse1" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="nome" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" aria-describedby="Nome do Fornecedor"
+                                            placeholder="Escreva aqui..." name="nome" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="descricao" class="form-label">Descrição</label>
+                                        <textarea type="text" class="form-control" aria-describedby="Descrição"
+                                            name="descricao"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="modelo" class="form-label">Modelo</label>
+                                        <input type="float" class="form-control" aria-describedby="Modelo" min="0" name="modelo" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="preco" class="form-label">Preço</label>
+                                        <input type="float" class="form-control" aria-describedby="Preço" min="0" name="preco" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse2">
+                                <label>2. Outros</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="input-container-inside">
+                
+                                    <label for="category" class="form-label">Categoria</label>
+                                    <select class="form-select" aria-label="Default select example" required>
+                                        <option selected>Selecionar...</option>
+                                
+                                        {% for category in category_list %}
+                                
+                                        <option value="{{ category.id }}">{{ category.nome }}</option>
+                                
+                                        {% endfor %}
+                                
+                                    </select>
+                                </div>
+                                <div class="input-container">
+                                    <div class="input-container-inside">
+                                
+                                        <label for="supplier" class="form-label">Fabricante</label>
+                                        <select class="form-select" aria-label="Default select example" required>
+                                            <option selected>Selecionar...</option>
+                                
+                                            {% for supplier in supplier_list %}
+                                
+                                            <option value="{{ supplier.id }}">{{ supplier.nome }}</option>
+                                
+                                            {% endfor %}
+                                
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

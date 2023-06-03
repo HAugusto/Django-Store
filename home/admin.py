@@ -5,6 +5,7 @@ from home import models
 
 admin.site.register(models.Categoria)
 admin.site.register(models.Fabricante)
+admin.site.register(models.Cliente)
 
 admin.site.register(models.Computador)
 admin.site.register(models.Armazem)
