@@ -8,6 +8,13 @@ class getFromDatabase:
         def getTotalNumberRegistered():
             return models.Fabricante.objects.count()
         
+    class AboutClient():
+        def getAll():
+            return models.Cliente.objects.all().order_by('nome')
+        
+        def getTotalNumberRegistered():
+            return models.Cliente.objects.count()
+                
     class AboutCategory():
         def getAll():
             return models.Categoria.objects.all().order_by('nome')

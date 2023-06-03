@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 psycopg2 = "*"
 python-decouple = "*"
+mod-wsgi = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
