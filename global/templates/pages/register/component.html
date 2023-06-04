@@ -44,15 +44,9 @@
 
                                 <div class="mb-3">
                                     <div class="input-container-inside">
-                                        <label for="modelo" class="form-label">Modelo</label>
-                                        <input type="float" class="form-control" aria-describedby="Modelo" min="0" name="modelo" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="input-container-inside">
                                         <label for="preco" class="form-label">Preço</label>
-                                        <input type="float" class="form-control" aria-describedby="Preço" min="0" name="preco" required>
+                                        <input type="float" class="form-control" aria-describedby="Preço" min="0"
+                                            name="preco_custo" required>
                                     </div>
                                 </div>
                             </div>
@@ -70,33 +64,52 @@
                         </div>
                         <div id="flush-collapse2" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <div class="input-container-inside">
-                
+                                <div class="input-container-inside mb-3">
+
                                     <label for="category" class="form-label">Categoria</label>
-                                    <select class="form-select" aria-label="Default select example" required>
+                                    <select class="form-select" aria-label="Default select example" name="fk_categoria"
+                                        required>
                                         <option selected>Selecionar...</option>
-                                
+
                                         {% for category in category_list %}
-                                
+
                                         <option value="{{ category.id }}">{{ category.nome }}</option>
-                                
+
                                         {% endfor %}
-                                
+
                                     </select>
                                 </div>
-                                <div class="input-container">
+
+                                <div class="input-container-inside mb-3">
+
+                                    <label for="category" class="form-label">Modelo</label>
+                                    <select class="form-select" aria-label="Default select example" name="modelo"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for model in model_list %}
+
+                                        <option value="{{ model.id }}">{{ model.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <div class="input-container mb-3">
                                     <div class="input-container-inside">
-                                
+
                                         <label for="supplier" class="form-label">Fabricante</label>
-                                        <select class="form-select" aria-label="Default select example" required>
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="fk_fabricante" required>
                                             <option selected>Selecionar...</option>
-                                
+
                                             {% for supplier in supplier_list %}
-                                
+
                                             <option value="{{ supplier.id }}">{{ supplier.nome }}</option>
-                                
+
                                             {% endfor %}
-                                
+
                                         </select>
                                     </div>
                                 </div>

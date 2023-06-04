@@ -1,0 +1,94 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Componentes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="container">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ supplier.nome }}" name="nome">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">CNPJ: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ supplier.cnpj }}" name="cnpj" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Descrição: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ supplier.descricao }}" name="descricao">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Endereço: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ supplier.endereco }}" name="endereco">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cidade: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ supplier.cidade }}" name="cidade">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Estado: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ supplier.estado }}" name="estado">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Email: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ supplier.email }}" name="email">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Telefone: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ supplier.telefone }}" name="telefone">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Celular: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ supplier.celular }}" name="celular">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

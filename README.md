@@ -33,7 +33,7 @@ DB_NAME=
 ## 4 - Nas variaveis de ambiente colocar na variavel de usuario 'C:\Apache\bin' e na variavel de ambiente'MOD_WSGI_APACHE_ROOT_DIR C:\Apache24'
 
 
-## 5 - No terminal do projeto executar 'mod_wsgi-express module-config' *Necessário o C++*
+## 5 - No terminal do projeto executar 'mod_wsgi-express module-config' *Necessário o Visual Studio Community com o módulo de desenvolvimento de C++*
 ### Será devolvido pelo terminal três linhas (SALVE)
     
     

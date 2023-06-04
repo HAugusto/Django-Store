@@ -1,0 +1,52 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Componentes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Fabricante</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Apagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for component in component_list %}
+                <tr>
+                    <th scope="row"><a href="/editar/componente/{{ component.id }}/"> {{ component.nome }} </a></th>
+                    <td>{{ component.modelo }}</td>
+                    <td>{{ component.descricao }}</td>
+                    <td>{{ component.preco_custo }}</td>
+                    <td>{{ component.fk_categoria }}</td>
+                    <td>{{ component.fk_fabricante }}</td>
+
+                    <form method="POST" action="{% url 'editar-componente' component.id %}">
+                        {% csrf_token %}
+                        <td><button><i class="fa-solid fa-edit" aria-hidden="true"></i></button></td>
+                    </form>
+                    <form method="POST" action="{% url 'remover-componente' component.id %}">
+                        {% csrf_token %}
+                        <td><button type="submit"><i class="fa-solid fa-trash" aria-hidden="true"></i></button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+{% endblock %}

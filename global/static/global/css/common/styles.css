@@ -5,6 +5,7 @@ além de ser utilizado como meio de configuração para alguns itens do HTML
 
 /* Estilo Geral do Site */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root {
   background-color: rgb(230, 230, 230);
 }
@@ -14,7 +15,7 @@ além de ser utilizado como meio de configuração para alguns itens do HTML
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 1.05em;
+  font-size: 1em;
   font-family: 'Poppins', sans-serif;
   /* <---- Fonte Global */
 }
@@ -37,16 +38,17 @@ ul {
 button {
   border: 0px;
   background-color: white;
-  
+
 }
 
 /* Estilo Geral do Body da Página */
-body{
+body {
   background: linear-gradient(rgb(255, 255, 255), rgb(196, 195, 195));
   height: 100%;
   min-height: 100vh;
 }
+
 .main-content-container {
   height: 100%;
-  min-height: 63vh;
+  min-height: 68vh;
 }
