@@ -16,10 +16,10 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Modelo</th>
-                    <th scope="col">Descricao</th>
+                    <th scope="col">Descrição</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col">Fabricante</th>
+                    <th scope="col">Fornecedor</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Apagar</th>
                 </tr>
@@ -27,7 +27,7 @@
             <tbody>
                 {% for component in component_list %}
                 <tr>
-                    <th scope="row"><a href="/editar/componente/{{ component.id }}/"> {{ component.nome }} </a></th>
+                    <th scope="row"><a href="/componente/{{ component.id }}/"> {{ component.nome }} </a></th>
                     <td>{{ component.modelo }}</td>
                     <td>{{ component.descricao }}</td>
                     <td>{{ component.preco_custo }}</td>

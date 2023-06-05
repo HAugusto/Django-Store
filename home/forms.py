@@ -8,23 +8,12 @@ class newClient(forms.ModelForm):
         model = models.Cliente
         fields = '__all__'
 
-class UpdateClient(forms.ModelForm):
-    class Meta:
-        model = models.Cliente
-        fields = ['nome', 'endereco', 'cidade', 'estado', 'email', 'telefone', 'celular']
-
 # Forms - Cadastro de Fornecedor - Implementado
 class newSupplier(forms.ModelForm):
     class Meta:
         model = models.Fabricante
         fields = '__all__'
-        
-
-class UpdateSupplier(forms.ModelForm):
-    class Meta:
-        model = models.Fabricante
-        fields = ['nome', 'descricao', 'endereco', 'cidade', 'estado', 'email', 'telefone', 'celular']
-        
+                
 # Forms - Cadastro de Categoria - Implementado
 class newCategory(forms.ModelForm):
     class Meta:
@@ -35,12 +24,7 @@ class newCategory(forms.ModelForm):
 class newComponent(forms.ModelForm):
     class Meta:
         model = models.Componente
-        fields = '__all__'     
-
-class UpdateComponent(forms.ModelForm):
-    class Meta:
-        model = models.Componente
-        fields = ['nome', 'preco_custo']
+        fields = '__all__'
         
 # Forms - Cadastro de Computador
 class newComputer(forms.ModelForm): 
@@ -48,7 +32,27 @@ class newComputer(forms.ModelForm):
         model = models.Computador
         fields = '__all__'
         
-class UpdateComputer(forms.ModelForm):
+class newComputerComponent(forms.ModelForm):
+    class Meta:
+        model = models.Computador_Componente
+        fields = '__all__'
+
+class updateClient(forms.ModelForm):
+    class Meta:
+        model = models.Cliente
+        fields = ['nome', 'endereco', 'cidade', 'estado', 'email', 'telefone', 'celular']
+        
+class updateSupplier(forms.ModelForm):
+    class Meta:
+        model = models.Fabricante
+        fields = ['nome', 'descricao', 'endereco', 'cidade', 'estado', 'email', 'telefone', 'celular']
+
+class updateComponent(forms.ModelForm):
+    class Meta:
+        model = models.Componente
+        fields = ['nome', 'preco_custo']
+        
+class updateComputer(forms.ModelForm):
     class Meta:
         model = models.Componente
         fields = ['nome', 'preco_custo']
@@ -58,3 +62,9 @@ class newStorage(forms.ModelForm):
     class Meta:
         model = models.Armazem
         fields = '__all__'
+        
+# Forms - Cadastro de Armazém
+class updateStorage(forms.ModelForm):
+    class Meta:
+        model = models.Armazem
+        fields = ['nome', 'descricao', 'endereco', 'cidade', 'estado']

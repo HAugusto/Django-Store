@@ -68,8 +68,32 @@ class CreatePageView:
         return render(request, template_name='pages/register/component.html', context=context)
     
     def ProductPage(request):
+        model_list = models.Modelo.objects.filter(is_component = False)
+        category_list = models.Categoria.objects.filter(is_component = False)
         
-        context = {}
+        motherboard_list = models.Componente.objects.filter(fk_categoria__nome = 'Placa-Mãe')
+        processor_list = models.Componente.objects.filter(fk_categoria__nome = 'Processador')
+        ram_memory_list = models.Componente.objects.filter(fk_categoria__nome = 'Memória RAM')
+        video_card_list = models.Componente.objects.filter(fk_categoria__nome = 'Placa de Vídeo')
+        power_supply_list = models.Componente.objects.filter(fk_categoria__nome = 'Fonte')
+        cabinet_list = models.Componente.objects.filter(fk_categoria__nome = 'Gabinete')
+        
+        if request.method == 'POST':
+            form = forms.newComputer(request.POST)
+            
+            if form.is_valid():
+                fk_computador = form.save()
+                
+                forms.newComputerComponent(request.POST)
+            
+                messages.success(request, "Produto cadastrado!")
+                return redirect('/')    
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.newComputer()
+            
+        context = {'model_list': model_list, 'category_list': category_list, 'motherboard_list': motherboard_list, 'processor_list': processor_list, 'ram_memory_list': ram_memory_list, 'video_card_list': video_card_list, 'power_supply_list': power_supply_list, 'cabinet_list': cabinet_list, 'form': form}
         
         return render(request, template_name='pages/register/product.html', context=context)
     
@@ -115,15 +139,13 @@ class ReadPageView:
         return render(request, template_name='pages/index.html', context=context)
     
     def StoragePage(request):
+        storage_list = getFromDatabase.AboutStorage.getAll()
         
-        supplier_list = getFromDatabase.AboutStorage.getAll()
-        
-        context = {'supplier_list': supplier_list}
+        context = {'storage_list': storage_list}
         
         return render(request, template_name='pages/read/storage.html', context=context)
 
     def SupplierPage(request):
-        
         supplier_list = getFromDatabase.AboutSupplier.getAll()
         
         context = {'supplier_list': supplier_list}
@@ -145,12 +167,27 @@ class ReadPageView:
         return render(request, template_name='pages/read/component.html', context=context)
 
 class UpdatePageView:
-    def StoragePage(request, id):
-        tag = get_object_or_404(models.Armazem, id=id)
+    def StorageIDPage(request, id):
+        try:
+            storage = models.Armazem.objects.get(id=id)
+        except models.Armazem.DoesNotExist:
+            storage = None
 
         if request.method == 'POST':
-            tag.delete()
-            return redirect('/glossario/')
+            form = forms.updateStorage(request.POST, instance=storage)
+            
+            if form.is_valid():
+                storage = form.save()                
+                messages.success(request, "Item atualizado com sucesso!")
+                return redirect('/fornecedores/')
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.updateStorage(instance=storage)
+        
+        context = {'storage': storage, 'form': form}
+        
+        return render(request, template_name='pages/update/storageid.html', context=context)
              
     def SupplierIDPage(request, id):
         try:
@@ -159,7 +196,7 @@ class UpdatePageView:
             supplier = None
 
         if request.method == 'POST':
-            form = forms.UpdateSupplier(request.POST, instance=supplier)
+            form = forms.updateSupplier(request.POST, instance=supplier)
             
             if form.is_valid():
                 supplier = form.save()                
@@ -168,7 +205,7 @@ class UpdatePageView:
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
-            form = forms.UpdateSupplier(instance=supplier)
+            form = forms.updateSupplier(instance=supplier)
         
         context = {'supplier': supplier, 'form': form}
         
@@ -182,7 +219,7 @@ class UpdatePageView:
             client = None
 
         if request.method == 'POST':
-            form = forms.UpdateClient(request.POST, instance=client)
+            form = forms.updateClient(request.POST, instance=client)
             
             if form.is_valid():
                 client = form.save()                
@@ -191,7 +228,7 @@ class UpdatePageView:
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
-            form = forms.UpdateClient(instance=client)
+            form = forms.updateClient(instance=client)
         
         context = {'client': client, 'form': form}
         
@@ -204,7 +241,7 @@ class UpdatePageView:
             component = None
 
         if request.method == 'POST':
-            form = forms.UpdateComponent(request.POST, instance=component)
+            form = forms.updateComponent(request.POST, instance=component)
             
             if form.is_valid():
                 component = form.save()                
@@ -213,7 +250,7 @@ class UpdatePageView:
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
-            form = forms.UpdateComponent(instance=component)
+            form = forms.updateComponent(instance=component)
         
         context = {'component': component, 'form': form}
         

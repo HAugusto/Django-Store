@@ -9,45 +9,186 @@
 {% block content %}
 
 <main class="main-content-container">
-    <!-- Forms 1 -->
-    <div class="main-content container">
-        <form id="form1" method="post" action="">
-            {% csrf_token %}
 
-            <div class="selection-content-page d-flex">
-                <div class="select-content">
+    <div class="forms-container">
+        <div class="forms-container">
+            <form method="post">
 
-                    <div class="form-row d-flex mb-3">
-                        <div class="input-container">
-                            <div class="input-container-inside">
+                {% csrf_token %}
 
-                                <label for="InputEquipmentList" class="form-label">EQUIPAMENTO PADRÃO</label>
-                                <select class="form-select" aria-label="Default select example" required>
-                                    <option selected>Selecionar...</option>
-
-                                    {% for equipment_list in equipment %}
-
-                                    <option value="{{ equipment_list.id }}">{{ equipment_list.nome }}
-                                    </option>
-
-                                    {% endfor %}
-
-                                </select>
-                            </div>
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse1">
+                                <label>1. Básico</label>
+                            </button>
                         </div>
-                        <div class="input-container">
-                            <div class="input-container-inside">
-                                <label for="InputTAGNameGlossary" class="form-label">TAG</label>
-                                <input type="text" class="form-control" id="InputGlossaryTagName" aria-describedby="TAG"
-                                    placeholder="Escreva aqui...">
+                        <div id="flush-collapse1" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="nome" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" aria-describedby="Nome do Fornecedor"
+                                            placeholder="Escreva aqui..." name="nome" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="input-container-inside">
+                                        <label for="descricao" class="form-label">Descrição</label>
+                                        <textarea type="text" class="form-control" aria-describedby="Descrição"
+                                            name="descricao"></textarea>
+                                    </div>
+
+                                    <div class="input-container-inside mb-3">
+                                        <label for="modelo" class="form-label">Modelo</label>
+                                        <select class="form-select" aria-label="Default select example" name="fk_modelo"
+                                            required>
+                                            <option selected>Selecionar...</option>
+
+                                            {% for model in model_list %}
+
+                                            <option value="{{ model.id }}">{{ model.nome }}</option>
+
+                                            {% endfor %}
+
+                                        </select>
+                                    </div>
+                                    <div class="input-container-inside mb-3">
+                                        <label for="categoria" class="form-label">Categoria</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="fk_categoria" required>
+                                            <option selected>Selecionar...</option>
+
+                                            {% for category in category_list %}
+
+                                            <option value="{{ category.id }}">{{ category.nome }}</option>
+
+                                            {% endfor %}
+
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary">Próximo</button>
                 </div>
-            </div>
-        </form>
+
+                <div class="accordion accordion-flush" id="accordionFlush">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse2">
+                                <label>2. Hardware</label>
+                            </button>
+                        </div>
+                        <div id="flush-collapse2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <!-- Placa Mãe -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Placa Mãe</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_mb"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for motherboard in motherboard_list %}
+
+                                        <option value="{{ motherboard.id }}">{{ motherboard.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <!-- Processador -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Processador</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_cpu"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for processor in processor_list %}
+
+                                        <option value="{{ processor.id }}">{{ processor.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <!-- Memória RAM -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Memória RAM</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_ram"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for ram_memory in ram_memory_list %}
+
+                                        <option value="{{ ram_memory.id }}">{{ ram_memory.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <!-- Placa de Vídeo -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Placa de Vídeo</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_gpu"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for video_card in video_card_list %}
+
+                                        <option value="{{ video_card.id }}">{{ video_card.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <!-- Fonte -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Fonte</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_power"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for power_supply in power_supply_list %}
+
+                                        <option value="{{ power_supply.id }}">{{ power_supply.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+
+                                <!-- Gabinete -->
+                                <div class="input-container-inside mb-3">
+                                    <label for="fk_componente" class="form-label">Gabinete</label>
+                                    <select class="form-select" aria-label="Default select example" name="fk_cabinet"
+                                        required>
+                                        <option selected>Selecionar...</option>
+
+                                        {% for cabinet in cabinet_list %}
+
+                                        <option value="{{ cabinet.id }}">{{ cabinet.nome }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
     </div>
 </main>
 
-{% endblock%}
+{% endblock %}
