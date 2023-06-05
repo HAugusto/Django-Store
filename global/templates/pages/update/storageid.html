@@ -1,0 +1,70 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Componentes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="container">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ storage.nome }}" name="nome">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Descrição: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ storage.descricao }}" name="descricao">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Volume: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ storage.volume }}" name="volume" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Endereço: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ storage.endereco }}" name="endereco">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cidade: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ storage.cidade }}" name="cidade">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Estado: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ storage.estado }}" name="estado">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

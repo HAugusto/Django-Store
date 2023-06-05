@@ -30,6 +30,7 @@ class TimestampMixin(models.Model):
 class Categoria(TimestampMixin):
     nome = models.CharField(max_length=50, unique=True, null=False, blank=False)
     descricao = models.CharField(max_length=200, null=True, blank=True)
+    is_component = models.BooleanField(default=True)
     
     def __str__(self):
         return self.nome
@@ -53,6 +54,7 @@ class Fabricante(EnderecoMixin, ContatoMixin, TimestampMixin):
 class Modelo(TimestampMixin):
     nome = models.CharField(max_length=50, unique=True, null=False, blank=False)
     descricao = models.CharField(max_length=200, null=True, blank=True)
+    is_component = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nome
@@ -103,8 +105,11 @@ class Venda(TimestampMixin):
 # TABELAS DE LIGAÇÃO
 class Computador_Componente(models.Model):
     fk_computador = models.ForeignKey(Computador, on_delete=models.CASCADE)
-    fk_componente = models.ForeignKey(Componente, on_delete=models.CASCADE)
-
+    fk_gpu = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_gpu')
+    fk_cpu = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_cpu')
+    fk_mb = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_mb')
+    fk_ram = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_ram')
+    
     def __str__(self):
         return self.fk_computador
     
