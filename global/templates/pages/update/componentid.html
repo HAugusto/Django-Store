@@ -1,0 +1,62 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Componentes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="container">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ component.nome }}" name="nome">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Modelo: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ component.modelo }}" name="modelo" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Custo (US$): </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ component.preco_custo }}" name="preco_custo">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Categoria: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ component.fk_categoria }}" name="categoria" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Fabricante: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ component.fk_fabricante }}" name="fk_fabricante" disabled>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

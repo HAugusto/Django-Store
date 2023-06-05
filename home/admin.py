@@ -4,9 +4,11 @@ from home import models
 # Register your models here.
 
 admin.site.register(models.Categoria)
+admin.site.register(models.Modelo)
 admin.site.register(models.Fabricante)
 admin.site.register(models.Cliente)
 
+admin.site.register(models.Componente)
 admin.site.register(models.Computador)
 admin.site.register(models.Armazem)
 admin.site.register(models.Itens)

@@ -49,22 +49,22 @@ class Fabricante(EnderecoMixin, ContatoMixin, TimestampMixin):
     
     def __str__(self):
         return self.nome
-
-class Componente(TimestampMixin):
-    nome = models.CharField(max_length=50, null=False, blank=False)
-    modelo = models.CharField(max_length=50, null=False, blank=False)
-    descricao = models.CharField(max_length=200, null=True, blank=True)
-    preco_custo = models.FloatField(null=False, blank=False)
-    fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    fk_fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.nome
     
 class Modelo(TimestampMixin):
     nome = models.CharField(max_length=50, unique=True, null=False, blank=False)
     descricao = models.CharField(max_length=200, null=True, blank=True)
 
+    def __str__(self):
+        return self.nome
+
+class Componente(TimestampMixin):
+    nome = models.CharField(max_length=50, null=False, blank=False)
+    modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
+    descricao = models.CharField(max_length=200, null=True, blank=True)
+    preco_custo = models.FloatField(null=False, blank=False)
+    fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    fk_fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.nome
     
