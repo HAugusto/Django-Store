@@ -11,8 +11,8 @@ import os
 import sys
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('C:/Users/wagne/Documents/Store')
-sys.path.append('C:/Users/wagne/Documents/Store/project')
+sys.path.append('C:/Users/felip/OneDrive/Documentos/Projetos/Store')
+sys.path.append('C:/Users/felip/OneDrive/Documentos/Projetos/Store/project')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 
