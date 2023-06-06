@@ -91,3 +91,17 @@ Require all granted
 
 ## 9 - É necessario instalar o MySQL e configurar suas credenciais no .env
 ### Instale o MySQL Installer e Baixe o MySQL Server e configure, MySQL Workbench, MySQL Shell e MySQL Router 
+
+
+# COMO RODAR
+
+## Ter o python instalado e executar no terminal pip install pipenv
+## Em seguida executar pipenv shell para criar a variavel de ambiente do python e executar pipenv install
+
+### *Não esquecer de criar um arquivo .env com as variaveis do seu banco
+
+## Após instalar todos os pacotes executar python manage.py makemigrations e em seguita python manage.py migrate para criar todas as tabelas no banco de dados 
+
+## Para rodar o site localmente apenas execute python manage.py 
+
+## Para rodar o site no servidor, abra o CMD com Admin entrar na pasta 'C:\Apache24\bin>' e executar 'httpd.exe -k start' e entrar no endereço que foi pego no ipconfig
