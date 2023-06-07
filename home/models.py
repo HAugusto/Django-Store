@@ -105,13 +105,15 @@ class Venda(TimestampMixin):
 # TABELAS DE LIGAÇÃO
 class Computador_Componente(models.Model):
     fk_computador = models.ForeignKey(Computador, on_delete=models.CASCADE)
-    fk_gpu = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_gpu')
     fk_cpu = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_cpu')
+    fk_gpu = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_gpu')
     fk_mb = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_mb')
     fk_ram = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_ram')
+    fk_power = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_power')
+    fk_cabinet = models.ForeignKey(Componente, on_delete=models.CASCADE, related_name='componentes_cabinet')
     
     def __str__(self):
-        return self.fk_computador
+        return str(self.fk_computador)
     
 class Armazem_Componente(models.Model):
     quantidade = models.IntegerField(null=False, blank=False, default=1)

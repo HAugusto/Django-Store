@@ -1,0 +1,55 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+
+<title>Produto</title>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <div class="container">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ product.nome }}" name="nome">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Descrição: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value=" {{ product.descricao }}" name="descricao">
+            </div>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Categoria: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ product.fk_categoria }}" name="categoria" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Modelo: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
+                    value="{{ product.fk_modelo }}" name="fk_modelo" disabled>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

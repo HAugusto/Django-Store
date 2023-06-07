@@ -1,12 +1,46 @@
-{% extends 'partials/base.html' %} {% block title %}
+{% extends 'partials/base.html' %}
 
-<title>Home</title>
+{% block title %}
 
-{% endblock %} {% block content %}
+<title>Inventário</title>
+
+{% endblock %}
+
+{% block content %}
 
 <main class="main-content-container">
-    <div class="main-content container">
+    <div class="container">
 
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Capacidade</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Apagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for storage in storage_list %}
+                <tr>
+                    <th scope="row"><a href="/armazem/{{ storage.id }}/"> {{ storage.nome }} </a></th>
+                    <td>{{ storage.descricao }}</td>
+                    <td>{{ storage.volume }}</td>
+                    <td>{{ storage.endereco }}, {{ storage.cidade }} - {{ storage.estado }}, </td>
+                    <form method="POST" action="{% url 'editar-armazem' storage.id %}">
+                        {% csrf_token %}
+                        <td><button><i class="fa-solid fa-edit" aria-hidden="true"></i></button></td>
+                    </form>
+                    <form method="POST" action="{% url 'remover-armazem' storage.id %}">
+                        {% csrf_token %}
+                        <td><button type="submit"><i class="fa-solid fa-trash" aria-hidden="true"></i></button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </main>
 

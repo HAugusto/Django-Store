@@ -1,0 +1,25 @@
+<div class="btn-file-container d-flex justify-content-end">
+    <form id="import-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <a class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                    <input type="file" id="upload" name="excel-file" hidden />
+                    <label for="upload"><i class="fas fa-file-import"></i> Importar</label>
+            </a>
+    </form>
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                    var importButton = document.querySelector('.btn-secondary');
+                    var fileInput = document.getElementById('upload');
+
+                    importButton.addEventListener('click', function () {
+                            fileInput.click();
+                    });
+
+                    fileInput.addEventListener('change', function () {
+                            document.getElementById('import-form').submit();
+                    });
+            });
+    </script>
+</div>

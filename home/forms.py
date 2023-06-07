@@ -55,7 +55,7 @@ class updateComponent(forms.ModelForm):
 class updateComputer(forms.ModelForm):
     class Meta:
         model = models.Componente
-        fields = ['nome', 'preco_custo']
+        fields = ['nome', 'descricao']
         
 # Forms - Cadastro de Armazém
 class newStorage(forms.ModelForm):

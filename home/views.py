@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView
 from django.contrib import messages
 from . import forms, models
 from .utils.lib_db import getFromDatabase
+from .utils.ex_import import Import
 
 class CreatePageView:
     def RegistrationPage(request):
@@ -56,7 +56,7 @@ class CreatePageView:
             if form.is_valid():
                 form.save()
                 messages.success(request, "Novo componente cadastrado!")
-                return redirect('/')
+                return redirect('/componentes/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
@@ -82,10 +82,12 @@ class CreatePageView:
             form = forms.newComputer(request.POST)
             
             if form.is_valid():
-                fk_computador = form.save()
+                form.save()
                 
-                forms.newComputerComponent(request.POST)
-            
+                computer = forms.newComputerComponent(request.POST)
+                if computer.is_valid():
+                    computer.save()
+                
                 messages.success(request, "Produto cadastrado!")
                 return redirect('/')    
             else:
@@ -104,7 +106,7 @@ class CreatePageView:
             if form.is_valid():
                 form.save()
                 messages.success(request, "Fornecedor cadastrado!")
-                return redirect('/')
+                return redirect('/fornecedores/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
@@ -120,8 +122,8 @@ class CreatePageView:
             
             if form.is_valid():
                 form.save()
-                messages.success(request, "Fornecedor cadastrado!")
-                return redirect('/')
+                messages.success(request, "Cliente cadastrado!")
+                return redirect('/clientes/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
@@ -132,19 +134,19 @@ class CreatePageView:
         return render(request, template_name='pages/register/client.html', context=context)
     
 class ReadPageView:
-    def HomePage(request):        
-        
-        context = {}
-        
-        return render(request, template_name='pages/index.html', context=context)
-    
-    def StoragePage(request):
+    def HomePage(request): 
         storage_list = getFromDatabase.AboutStorage.getAll()
         
         context = {'storage_list': storage_list}
         
-        return render(request, template_name='pages/read/storage.html', context=context)
+        return render(request, template_name='pages/index.html', context=context)
 
+    def ReadPage(request):
+        
+        context = {}
+
+        return render(request, template_name='pages/read/read.html', context=context)
+    
     def SupplierPage(request):
         supplier_list = getFromDatabase.AboutSupplier.getAll()
         
@@ -165,6 +167,13 @@ class ReadPageView:
         context = {'component_list': component_list}
         
         return render(request, template_name='pages/read/component.html', context=context)
+    
+    def ProductsPage(request):
+        product_list = getFromDatabase.AboutComputer.getAll()
+        
+        context = {'product_list': product_list}
+        
+        return render(request, template_name='pages/read/product.html', context=context)
 
 class UpdatePageView:
     def StorageIDPage(request, id):
@@ -179,7 +188,7 @@ class UpdatePageView:
             if form.is_valid():
                 storage = form.save()                
                 messages.success(request, "Item atualizado com sucesso!")
-                return redirect('/fornecedores/')
+                return redirect('/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
@@ -224,7 +233,7 @@ class UpdatePageView:
             if form.is_valid():
                 client = form.save()                
                 messages.success(request, "Item atualizado com sucesso!")
-                return redirect('/fornecedores/')
+                return redirect('/clientes/')
             else:
                 messages.error(request, "O formulário não foi preenchido corretamente")
         else:
@@ -256,14 +265,36 @@ class UpdatePageView:
         
         return render(request, template_name='pages/update/componentid.html', context=context)
     
-    def ProductPage(request, id):
-        tag = get_object_or_404(models.Computador, id=id)
+    def ProductIDPage(request, id):
+        try:
+            product = models.Computador.objects.get(id=id)
+        except models.Computador.DoesNotExist:
+            product = None
+
+        if request.method == 'POST':
+            form = forms.updateComputer(request.POST, instance=product)
+            
+            if form.is_valid():
+                product = form.save()                
+                messages.success(request, "Item atualizado com sucesso!")
+                return redirect('/produtos/')
+            else:
+                messages.error(request, "O formulário não foi preenchido corretamente")
+        else:
+            form = forms.updateComputer(instance=product)
+        
+        context = {'product': product, 'form': form}
+        
+        return render(request, template_name='pages/update/productid.html', context=context)
+    
+class DeletePageView:
+    def StoragePage(request, id):
+        tag = get_object_or_404(models.Armazem, id=id)
 
         if request.method == 'POST':
             tag.delete()
-            return redirect('/glossario/')
-    
-class DeletePageView:
+            return redirect('/armazens/')
+        
     def SupplierPage(request, id):
         tag = get_object_or_404(models.Fabricante, id=id)
 
@@ -290,4 +321,5 @@ class DeletePageView:
 
         if request.method == 'POST':
             tag.delete()
-            return redirect('/produtos/')
+            return redirect('/produtos/')       
+        
